@@ -1,13 +1,16 @@
 -- 1. Wyświetl wszystkie kombinacje nazw etatów zaczynających się na literę A
 -- i nazwisk pracowników na literę N.
 SELECT
-	etat
+	up.nazwisko,
+	uz.nazwa
 FROM
-	uczelnia.pracownicy
+	uczelnia.pracownicy up
+CROSS JOIN
+	uczelnia.zespoly uz
 WHERE
-	SUBSTRING(etat,1,1)='A'
+	SUBSTRING(uz.nazwa,1,1)='A'
 AND
-	SUBSTRING(nazwisko,1,1)='N'
+	SUBSTRING(up.nazwisko,1,1)='N'
 
 
 -- 2. Wyświetl nazwę kontynentu i nazwę państwa dla Europy i Afryki.
