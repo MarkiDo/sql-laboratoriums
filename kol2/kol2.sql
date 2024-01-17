@@ -3,12 +3,7 @@ SELECT
 	sum(koszt) as "SUMA"
 FROM
 	uczelnia.zamowienia uz
-LEFT JOIN
-	uczelnia.sprzedawcy	us
-ON
-	uz.id_sprzedawcy = us.id_sprzedawcy
-WHERE miasto ilike '%'||'Skarzysk'||'%'
-	;
+WHERE uz.id_sprzedawcy in (SELECT us.id_sprzedawcy FROM uczelnia.sprzedawcy	us WHERE miasto ilike '%'||'Skarzysk'||'%')	;
 
 
 -- 2. Wyświetl wszystkie kolumny zamówień dla sprzedawcy, który ma największą
